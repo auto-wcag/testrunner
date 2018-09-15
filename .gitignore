@@ -1,0 +1,6 @@
+coverage
+
+example/node_modules
+example/output.json
+
+node_modules

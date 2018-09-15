@@ -1,0 +1,52 @@
+{
+  "name": "testrunner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "config": {
+    "TESTCASES_JSON": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/testcases.json",
+    "TESTCASES_KEY": "a11y-testcases"
+  },
+  "scripts": {
+    "dev": "npm run format && npm run lint && npm run test && cd example && npm run dev",
+    "lint": "eslint 'src/**/*.js'",
+    "test": "jest --coverage",
+    "format": "prettier --write  *.js '{src,test,example}/**/*.js'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "is-url": "^1.2.4",
+    "puppeteer": "^1.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-config-prettier-standard": "^2.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auto-wcag/testrunner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/auto-wcag/testrunner/issues"
+  },
+  "homepage": "https://github.com/auto-wcag/testrunner#readme"
+}
