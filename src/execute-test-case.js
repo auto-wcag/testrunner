@@ -33,7 +33,7 @@ async function executeTestCase({ browser, testcase, options }) {
     // mutate global with specific ruleId
     const mutatedGlobals = {
       ...globals,
-      ruleId: testcase.ruleId
+      testcase
     }
     // expose window level globals
     const [injectGlobalError] = await awaitHandler(
