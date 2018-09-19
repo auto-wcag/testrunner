@@ -52,12 +52,12 @@ const options = {
             'passed-passes': 'automated',
             'passed-violations': 'incorrect',
             'passed-incomplete': 'semi-automated',
-            'passed-inapplicable': 'incorrect',
+            'passed-inapplicable': 'automated', // * issue - https://github.com/auto-wcag/auto-wcag/issues/265
             'failed-passes': 'incorrect',
             'failed-violations': 'automated',
             'failed-incomplete': 'semi-automated',
             'failed-inapplicable': 'incorrect',
-            'inapplicable-passes': 'incorrect',
+            'inapplicable-passes': 'automated', // * issue - https://github.com/auto-wcag/auto-wcag/issues/265
             'inapplicable-violations': 'incorrect',
             'inapplicable-incomplete': 'incorrect',
             'inapplicable-inapplicable': 'automated'
@@ -91,7 +91,7 @@ const options = {
           document,
           {
             runOnly: {
-              type: 'rule',
+              type: 'rules',
               values: axeIds
             }
           },

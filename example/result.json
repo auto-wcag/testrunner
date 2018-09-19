@@ -14,7 +14,7 @@
       {
         "ruleId": "SC1-1-1-image-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC1-1-1-image-has-name_passed_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC1-1-1-image-has-name",
@@ -39,17 +39,17 @@
       {
         "ruleId": "SC1-1-1-image-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC1-1-1-image-has-name_inapplicable_example_1.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC1-1-1-image-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC1-1-1-image-has-name_inapplicable_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC1-1-1-image-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC1-1-1-image-has-name_inapplicable_example_3.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC1-1-1-image-has-name",
@@ -132,12 +132,12 @@
       {
         "ruleId": "SC1-2-Video-description-track",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC1-2-Video-description-track_inapplicable_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC1-2-Video-description-track",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC1-2-Video-description-track_inapplicable_example_3.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       }
     ]
   },
@@ -329,12 +329,12 @@
       {
         "ruleId": "SC2-4-4-link-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC2-4-4-link-has-name_passed_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC2-4-4-link-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC2-4-4-link-has-name_passed_example_3.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC2-4-4-link-has-name",
@@ -369,7 +369,7 @@
       {
         "ruleId": "SC2-4-4-link-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC2-4-4-link-has-name_passed_example_10.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC2-4-4-link-has-name",
@@ -512,7 +512,7 @@
       {
         "ruleId": "SC3-1-1-html-lang-valid",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC3-1-1-html-lang-valid_passed_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC3-1-1-html-lang-valid",
@@ -557,7 +557,7 @@
       {
         "ruleId": "SC3-1-1-html-lang-valid",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC3-1-1-html-lang-valid_inapplicable_example_3.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC3-1-1-html-lang-valid",
@@ -625,7 +625,7 @@
     "axeIds": [
       "valid-lang"
     ],
-    "ruleStatus": "incorrect",
+    "ruleStatus": "automated",
     "testCaseResults": [
       {
         "ruleId": "SC3-1-2-lang-valid",
@@ -665,12 +665,12 @@
       {
         "ruleId": "SC3-1-2-lang-valid",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC3-1-2-lang-valid_inapplicable_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC3-1-2-lang-valid",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC3-1-2-lang-valid_inapplicable_example_3.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       }
     ]
   },
@@ -704,7 +704,7 @@
       {
         "ruleId": "SC3-3-2-form-field-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC3-3-2-form-field-has-name_passed_example_5.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC3-3-2-form-field-has-name",
@@ -770,17 +770,17 @@
       {
         "ruleId": "SC4-1-1-unique-id",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-1-unique-id_passed_example_1.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC4-1-1-unique-id",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-1-unique-id_passed_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC4-1-1-unique-id",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-1-unique-id_passed_example_3.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC4-1-1-unique-id",
@@ -839,7 +839,7 @@
       {
         "ruleId": "SC4-1-2-button-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-2-button-has-name_passed_example_5.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC4-1-2-button-has-name",
@@ -884,7 +884,7 @@
       {
         "ruleId": "SC4-1-2-button-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-2-button-has-name_inapplicable_example_3.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       }
     ]
   }
