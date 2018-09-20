@@ -5,7 +5,7 @@ const executeTestCase = require('./execute-test-case')
 const awaitHandler = require('./await-handler')
 
 async function testRunner(options) {
-  const { debug = false, globals } = options
+  const { debug = false, globals, skipTests } = options
   if (!globals) {
     throw new Error(
       'Log: TestRunner: No `globals` object defined via configuration.'
@@ -28,7 +28,7 @@ async function testRunner(options) {
 
   // get all auto-wcag testcases
   const [err, testcases] = await awaitHandler(
-    loadTestCases(pkg.config, rulesMappedIds)
+    loadTestCases(pkg.config, rulesMappedIds, skipTests)
   )
   if (err) {
     throw new Error('Log: TestRunner: Error loading test cases. ', err)

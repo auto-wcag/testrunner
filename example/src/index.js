@@ -4,6 +4,22 @@ const axe = require('axe-core')
 const axePath = require.resolve('axe-core')
 const testRunner = require('../../src')
 
+const skipTests = {
+  ruleIds: [
+    /**
+     * Skipping because of below error
+     * => Error: Execution context was destroyed, most likely because of a navigation.
+     */
+    'SC2-2-1+SC3-2-5-meta-refresh' // axe-core rule -> ['meta-refresh']
+  ],
+  testCases: [
+    'SC2-4-2-page-has-title_inapplicable_example_1.html', // svg document cannot be tested for title
+    'SC2-4-4-link-has-name_failed_example_8.html', // issue - https://github.com/auto-wcag/auto-wcag/issues/267
+    'SC3-1-1-html-has-lang_inapplicable_example_1.html', // svg document cannot be tested for title
+    'SC4-1-2-button-has-name_failed_example_2.html' // issue - https://github.com/auto-wcag/auto-wcag/issues/264
+  ]
+}
+
 const rulesMap = {
   'SC1-1-1-image-has-name': ['image-alt'],
   'SC1-2-2-audio-captions': ['audio-caption'],
@@ -21,19 +37,15 @@ const rulesMap = {
     'duplicate-id-aria'
   ],
   'SC4-1-2-button-has-name': ['button-name'],
-  'SC1-3-5-autocomplete-valid': ['autocomplete-valid']
-  // fails
-  /**
-   * Q's
-   * 1) should we define data-rule-target?
-   * 2) also, getting below error due to redirect - Error: Execution context was destroyed, most likely because of a navigation.
-   */
-  // 'SC2-2-1+SC3-2-5-meta-refresh': ['meta-refresh']
+  'SC1-3-5-autocomplete-valid': ['autocomplete-valid'],
+  'SC2-2-1+SC3-2-5-meta-refresh': ['meta-refresh']
 }
 
 const options = {
   // debug mode of puppeteer
   debug: false,
+  // tests to skip
+  skipTests,
   // scripts to inject into puppeteer
   injectScripts: [
     axePath // 1) inject axe-core
@@ -81,10 +93,14 @@ const options = {
               value: inapplicable.length
             }
           ].sort((a, b) => b.value - a.value)[0]
-          const key = `${tc.expected}-${wcagResult.key}`
+          const wcagResultKey =
+            tc.expected === 'failed' && violations.length > 0
+              ? 'violations'
+              : wcagResult.key
+          const key = `${tc.expected}-${wcagResultKey}`
           return wcagVsAxeResultsMap[key]
         }
-
+        debugger
         const fixture = document.querySelector(testcase.selector)
         const axeIds = rulesMap[testcase.ruleId]
         axe.run(

@@ -4,7 +4,7 @@
     "axeIds": [
       "image-alt"
     ],
-    "ruleStatus": "incorrect",
+    "ruleStatus": "automated",
     "testCaseResults": [
       {
         "ruleId": "SC1-1-1-image-has-name",
@@ -29,7 +29,7 @@
       {
         "ruleId": "SC1-1-1-image-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC1-1-1-image-has-name_failed_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC1-1-1-image-has-name",
@@ -146,7 +146,7 @@
     "axeIds": [
       "autocomplete-valid"
     ],
-    "ruleStatus": "incorrect",
+    "ruleStatus": "automated",
     "testCaseResults": [
       {
         "ruleId": "SC1-3-5-autocomplete-valid",
@@ -176,7 +176,7 @@
       {
         "ruleId": "SC1-3-5-autocomplete-valid",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC1-3-5-autocomplete-valid_passed_example_6.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC1-3-5-autocomplete-valid",
@@ -260,7 +260,7 @@
     "axeIds": [
       "document-title"
     ],
-    "ruleStatus": "incorrect",
+    "ruleStatus": "automated",
     "testCaseResults": [
       {
         "ruleId": "SC2-4-2-page-has-title",
@@ -295,7 +295,7 @@
       {
         "ruleId": "SC2-4-2-page-has-title",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC2-4-2-page-has-title_failed_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC2-4-2-page-has-title",
@@ -305,12 +305,7 @@
       {
         "ruleId": "SC2-4-2-page-has-title",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC2-4-2-page-has-title_failed_example_4.html",
-        "testcaseStatus": "incorrect"
-      },
-      {
-        "ruleId": "SC2-4-2-page-has-title",
-        "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC2-4-2-page-has-title_inapplicable_example_1.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       }
     ]
   },
@@ -319,7 +314,7 @@
     "axeIds": [
       "link-name"
     ],
-    "ruleStatus": "incorrect",
+    "ruleStatus": "automated",
     "testCaseResults": [
       {
         "ruleId": "SC2-4-4-link-has-name",
@@ -408,11 +403,6 @@
       },
       {
         "ruleId": "SC2-4-4-link-has-name",
-        "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC2-4-4-link-has-name_failed_example_8.html",
-        "testcaseStatus": "incorrect"
-      },
-      {
-        "ruleId": "SC2-4-4-link-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC2-4-4-link-has-name_inapplicable_example_1.html",
         "testcaseStatus": "automated"
       },
@@ -433,7 +423,7 @@
     "axeIds": [
       "html-has-lang"
     ],
-    "ruleStatus": "incorrect",
+    "ruleStatus": "automated",
     "testCaseResults": [
       {
         "ruleId": "SC3-1-1-html-has-lang",
@@ -489,11 +479,6 @@
         "ruleId": "SC3-1-1-html-has-lang",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC3-1-1-html-has-lang_failed_example_4.html",
         "testcaseStatus": "automated"
-      },
-      {
-        "ruleId": "SC3-1-1-html-has-lang",
-        "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC3-1-1-html-has-lang_inapplicable_example_1.html",
-        "testcaseStatus": "incorrect"
       }
     ]
   },
@@ -765,7 +750,7 @@
       "duplicate-id-active",
       "duplicate-id-aria"
     ],
-    "ruleStatus": "incorrect",
+    "ruleStatus": "automated",
     "testCaseResults": [
       {
         "ruleId": "SC4-1-1-unique-id",
@@ -785,17 +770,17 @@
       {
         "ruleId": "SC4-1-1-unique-id",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-1-unique-id_failed_example_1.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC4-1-1-unique-id",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-1-unique-id_failed_example_2.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC4-1-1-unique-id",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-1-unique-id_failed_example_3.html",
-        "testcaseStatus": "incorrect"
+        "testcaseStatus": "automated"
       },
       {
         "ruleId": "SC4-1-1-unique-id",
@@ -814,7 +799,7 @@
     "axeIds": [
       "button-name"
     ],
-    "ruleStatus": "incorrect",
+    "ruleStatus": "automated",
     "testCaseResults": [
       {
         "ruleId": "SC4-1-2-button-has-name",
@@ -855,11 +840,6 @@
         "ruleId": "SC4-1-2-button-has-name",
         "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-2-button-has-name_failed_example_1.html",
         "testcaseStatus": "automated"
-      },
-      {
-        "ruleId": "SC4-1-2-button-has-name",
-        "testcaseUrl": "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/assets/SC4-1-2-button-has-name_failed_example_2.html",
-        "testcaseStatus": "incorrect"
       },
       {
         "ruleId": "SC4-1-2-button-has-name",
