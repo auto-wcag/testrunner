@@ -100,7 +100,7 @@ const options = {
           const key = `${tc.expected}-${wcagResultKey}`
           return wcagVsAxeResultsMap[key]
         }
-        debugger
+
         const fixture = document.querySelector(testcase.selector)
         const axeIds = rulesMap[testcase.ruleId]
         axe.run(
