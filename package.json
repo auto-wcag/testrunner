@@ -8,17 +8,10 @@
     "TESTCASES_KEY": "a11y-testcases"
   },
   "scripts": {
-    "dev": "npm run format && npm run lint && npm run test && cd example && npm run dev",
+    "build": "npm run format && npm run lint && npm run test",
     "lint": "eslint 'src/**/*.js'",
     "test": "jest --coverage",
-    "format": "prettier --write  *.js '{src,test,example}/**/*.js'",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
+    "format": "prettier --write  *.js '{src,test}/**/*.js'"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -36,7 +29,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "jest": "^23.6.0",
-    "lint-staged": "^7.2.2",
+    "jest-puppeteer": "^3.3.1",
     "markdown-table": "^1.1.2",
     "prettier": "^1.14.2"
   },

@@ -5,6 +5,7 @@ const executeTestCase = require('./execute-test-case')
 const awaitHandler = require('./await-handler')
 
 async function testRunner(options) {
+  console.log('Log: TestRunner: Start.')
   const { debug = false, globals, skipTests } = options
   if (!globals) {
     throw new Error(
@@ -64,6 +65,7 @@ async function testRunner(options) {
   return new Promise((resolve, reject) => {
     Promise.all(promises)
       .then(async results => {
+        console.log('Log: TestRunner: End.')
         // close browser
         const [browserCloseErr] = await awaitHandler(browser.close())
         if (browserCloseErr) {
@@ -73,6 +75,7 @@ async function testRunner(options) {
         resolve(results)
       })
       .catch(err => {
+        console.error('Error: TestRunner: End.', err)
         reject(err)
       })
   })

@@ -31,44 +31,26 @@ Members of the `config` object passed to the `testRunner`.
 | --- | --- | --- | --- |
 | `config.debug` | `Boolean` | `false` | (Optional) Runs the `testRunner` in `debug` mode, which launches each test case page in a chromium (non-headless) mode |
 | `config.injectScripts` | `Array<String>[]` | `undefined` | (Optional) A list of `path` or `url` of scripts to be injected into the `puppeteer` page context |
-| `config.globals` | `Object` | `undefined` | (Mandatory) An object containing `key-value` pairs of variables to be mounted as a global variable in the `puppeteer` page context for usage by the `evaluate` function |
+| `config.globals` | `Object` | `undefined` | (Mandatory) An object containing `key-value` pairs of `variables` or `functions` to be mounted as a global variable in the `puppeteer` page context for usage by the `evaluate` function |
 | `config.globals.rulesMap` | `Object` | - | (Mandatory) An object containing `key-value` pairs of `ruleId` of each `auto-wcag` rule mapped to a `uniqueId` of rule(s) to run against a chosen test tool |
-| `config.evaluate` | `Function` | -` | (Mandatory) A function to be evaluate on the page context |
+| `config.evaluate` | `Function` | -` | (Mandatory) A function containing logic to be evaluated on the page context |
 
 An example configuration object is as below:
 
 ```js
-const axe = require('axe-core')
-const axePath = require.resolve('axe-core')
-
 const config = {
   debug: false,
   injectScripts: [
-		'https://code.jquery.com/jquery-3.3.1.min.js',
-    axePath
+    'https://code.jquery.com/jquery-3.3.1.min.js',
+    // can be relative paths to any scripts as well, (eg: `../../myscript.js`)
   ],
   globals: {
-    rulesMap
+    rulesMap,
+    // this can also contain functions to be made available on the page context
+    // eg: myLogger: function(data) { console.log(data) }
   },
   evaluate: () => {
-    return () => {
-      return new Promise((resolve, reject) => {
-        axe.run(
-          {
-            runOnly: {
-              type: 'rule',
-              values: rulesMap[ruleId] // Note `ruleId` is automatically injected as a global
-            }
-          },
-          (err, result) => {
-            if (err) {
-              reject(err)
-            }
-            resolve(result)
-          }
-        )
-      })
-    }
+    // logic to be evaluated within the page context.
   }
 }
 ```

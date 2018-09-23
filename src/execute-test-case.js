@@ -30,25 +30,46 @@ async function executeTestCase({ browser, testcase, options }) {
       reject(pageScriptInjectErr)
     }
 
-    // mutate global with specific ruleId
-    const mutatedGlobals = {
-      ...globals,
-      testcase
-    }
+    // mutate global with testcase object
+    globals['testcase'] = testcase
+
     // expose window level globals
-    const [injectGlobalError] = await awaitHandler(
+    const globalVarsAndFns = Object.keys(globals).reduce(
+      (out, key) => {
+        if (typeof globals[key] === 'function') {
+          out.functions[key] = globals[key]
+        }
+        if (typeof globals[key] !== 'function') {
+          out.variables[key] = globals[key]
+        }
+        return out
+      },
+      { variables: {}, functions: {} }
+    )
+
+    // inject global vars
+    const [injectVariablesError] = await awaitHandler(
       page.evaluate(globals => {
         Object.keys(globals).forEach(key => {
           window[key] = globals[key]
         })
-      }, mutatedGlobals)
+      }, globalVarsAndFns.variables)
     )
-    if (injectGlobalError) {
-      reject(injectGlobalError)
+    if (injectVariablesError) {
+      reject(injectVariablesError)
     }
 
+    // expose functions as global
+    const injectFnPromises = []
+    Object.keys(globalVarsAndFns.functions).forEach(async key => {
+      injectFnPromises.push(
+        page.exposeFunction(key, globalVarsAndFns.functions[key])
+      )
+    })
+    await Promise.all(injectFnPromises)
+
     // evaluate given function in page context
-    const [evaluateErr, result] = await awaitHandler(page.evaluate(evaluate()))
+    const [evaluateErr, result] = await awaitHandler(page.evaluate(evaluate))
     if (evaluateErr) {
       reject(evaluateErr)
     }
