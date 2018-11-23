@@ -1,29 +1,37 @@
 const axios = require('axios')
-const awaitHandler = require('./await-handler')
 
+/**
+ * 
+ * @param {Object} config configuration object passed to testrunner
+ * @param {Object} mappedIds mapping of ACT testcase Ids to Test tool Ids
+ * @param {Object} skipTests list of testcases to skip from the ACT testcases
+ */
 async function loadTestCases(config, mappedIds, skipTests) {
-  const { ruleIds: skipRuleIds, testCases: skipTestCases } = skipTests
+  const { ruleIds: skipRuleIds, testCases: skipTestCases, extensions: skipExtensions  } = skipTests
+
   return new Promise(async (resolve, reject) => {
-    const [err, response] = await awaitHandler(axios.get(config.TESTCASES_JSON))
-    if (err) {
-      reject(err)
+    try {
+      const response = await axios.get(config.TESTCASES_JSON)
+      // filter out test cases that have a mapping to rules to run
+      // const result = tcs.filter(
+      const result = response.data[config.TESTCASES_KEY].filter(
+        ({ url, ruleId }) => {
+          const isMapped = mappedIds.includes(ruleId)
+          const shouldSkipRule = skipRuleIds.includes(ruleId)
+
+          const testCaseFileName = url.split('/').reverse()[0]
+          const testCaseExtension = testCaseFileName.split('.').reverse()[0]
+          const shouldSkipTestCase = skipTestCases.includes(testCaseFileName)
+          const shouldSkipExtension = skipExtensions.includes(testCaseExtension)
+
+          return isMapped && !shouldSkipRule && !shouldSkipTestCase && !shouldSkipExtension
+        }
+      )
+      // resolve
+      resolve(result)
+    } catch (error) {
+      reject(error)
     }
-
-    // filter out test cases that have a mapping to rules to run
-    const result = response.data[config.TESTCASES_KEY].filter(
-      ({ url, ruleId }) => {
-        const isMapped = mappedIds.includes(ruleId)
-        const shouldSkipRule = skipRuleIds.includes(ruleId)
-
-        const testCaseFileName = url.split('/').reverse()[0]
-        const shouldSkipTestCase = skipTestCases.includes(testCaseFileName)
-
-        return isMapped && !shouldSkipRule && !shouldSkipTestCase
-      }
-    )
-
-    // resolve
-    resolve(result)
   })
 }
 
