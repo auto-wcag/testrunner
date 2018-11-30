@@ -14,7 +14,9 @@ async function loadTestCases(config, mappedIds, skipTests) {
       const response = await axios.get(config.TESTCASES_JSON)
       // filter out test cases that have a mapping to rules to run
       // const result = tcs.filter(
-      const result = response.data[config.TESTCASES_KEY].filter(
+
+      const testCases = response.data[config.TESTCASES_KEY];
+      const result = testCases.filter(
         ({ url, ruleId }) => {
           const isMapped = mappedIds.includes(ruleId)
           const shouldSkipRule = skipRuleIds.includes(ruleId)

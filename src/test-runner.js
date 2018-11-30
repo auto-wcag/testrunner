@@ -8,6 +8,9 @@ const executeTestCase = require('./execute-test-case')
  * @param {Object} options configuration options for the testrunner
  */
 async function testRunner(options) {
+
+  process.setMaxListeners(Infinity)
+
   console.log('TestRunner: Start.')
 
   const { debug = false, globals, skipTests } = options
@@ -42,6 +45,7 @@ async function testRunner(options) {
         'TestRunner: No test cases are defined. Ensure test cases are supplied.'
       )
     }
+
     // boot up puppeteer once
     try {
       const browser = await puppeteer.launch({
@@ -52,32 +56,21 @@ async function testRunner(options) {
         })
       })
 
+      // run each test case and collate results
+      const results = []
+      for (const testcase of testcases) {
+        try {
+          
+          const testCaseResult = await executeTestCase({ browser, testcase, options })
+          console.log('Results for testcase', testcase, testCaseResult);
+          results.push(testCaseResult)
+        } catch (error) {
+          throw ('Error: TestRunner: ', error)
+        }
+      }
 
-      // run each test case
-      const promises = []
-      testcases.forEach(testcase => {
-        promises.push(executeTestCase({ browser, testcase, options }))
-      })
-
-      // return
-      return new Promise((resolve, reject) => {
-        Promise.all(promises)
-          .then(async results => {
-            console.log('TestRunner: End.')
-            // close browser
-            try {
-              await browser.close()
-            } catch (error) {
-              throw new Error(error)
-            }
-            // resolve
-            resolve(results)
-          })
-          .catch(err => {
-            console.error('Error: TestRunner: End.', err)
-            reject(err)
-          })
-      })
+      console.log('TestRunner: End.')
+      return results;
     } catch (error) {
       throw new Error('TestRunner: Unable to launch puppeteer.', error)
     }

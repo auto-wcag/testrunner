@@ -21,7 +21,7 @@ async function injectGlobals(page, globals) {
 }
 
 /**
- * 
+ * Execute given test case
  * @param {Object} param meta data used to execute an ACT testcase
  * @property {Object} param.browser Puppeteer browser object
  * @property {Object} param.testcase ACT testcase
@@ -31,26 +31,19 @@ async function executeTestCase({ browser, testcase, options }) {
   const { globals, evaluate } = options
 
   return new Promise(async (resolve, reject) => {
-    // open new page
+
     try {
+      // open new page
       const page = await browser.newPage()
 
       // go to given url
-      try {
-        await page.goto(testcase.url, { waitUntil: 'load' })
-      } catch (error) {
-        reject(error)
-      }
+      await page.goto(testcase.url, { waitUntil: 'load' })
 
       // inject scripts on page
-      try {
-        await scriptInjector({
-          page,
-          scripts: options.injectScripts
-        })
-      } catch (error) {
-        reject(error)
-      }
+      await scriptInjector({
+        page,
+        scripts: options.injectScripts
+      })
 
       // mutate global with testcase object
       globals['testcase'] = testcase
@@ -70,33 +63,17 @@ async function executeTestCase({ browser, testcase, options }) {
       )
 
       // inject global vars   
-      try {
-        await injectGlobals(page, globalVarsAndFns.variables)
-      } catch (error) {
-        reject(error)
-      }
+      await injectGlobals(page, globalVarsAndFns.variables)
 
       // expose functions as global
-      try {
-        await injectGlobals(page, globalVarsAndFns.functions)
-      } catch (error) {
-        reject(error)
-      }
+      await injectGlobals(page, globalVarsAndFns.functions)
 
       // evaluate given function in page context
-      try {
-        const results = await page.evaluate(evaluate)
-        try {
-          await page.close()
-        } catch (error) {
-          reject(error)
-        }
-        // resolve results
-        resolve(results)
-      } catch (error) {
-        reject(error)
-      }
+      const results = await page.evaluate(evaluate)
+      await page.close()
 
+      // resolve results
+      resolve(results)
     } catch (error) {
       reject(error)
     }
