@@ -58,11 +58,10 @@ async function testRunner(options) {
 
       // run each test case and collate results
       const results = []
-      for (const testcase of testcases) {
+      for (const [index, testcase] of testcases.entries()) {
         try {
-          
           const testCaseResult = await executeTestCase({ browser, testcase, options })
-          console.log('Results for testcase', testcase, testCaseResult);
+          console.log(`Executed test case: ${index + 1} of ${testcases.length}`);
           results.push(testCaseResult)
         } catch (error) {
           throw ('Error: TestRunner: ', error)
