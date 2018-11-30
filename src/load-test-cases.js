@@ -7,7 +7,7 @@ const axios = require('axios')
  * @param {Object} skipTests list of testcases to skip from the ACT testcases
  */
 async function loadTestCases(config, mappedIds, skipTests) {
-  const { ruleIds: skipRuleIds, testCases: skipTestCases, extensions: skipExtensions  } = skipTests
+  const { ruleIds: skipRuleIds, testCases: skipTestCases, fileExtensions: skipExtensions  } = skipTests
 
   return new Promise(async (resolve, reject) => {
     try {
