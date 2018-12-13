@@ -14,7 +14,7 @@ async function scriptInjector({ page, scripts = [] }) {
     scripts.forEach(async (script, index) => {
       const key = isUrl(script) ? 'url' : 'path'
       try {
-        await page.addScriptTag({[key]: script})
+        await page.addScriptTag({ [key]: script })
       } catch (error) {
         reject(error)
       }

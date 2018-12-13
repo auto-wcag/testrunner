@@ -8,12 +8,11 @@ const executeTestCase = require('./execute-test-case')
  * @param {Object} options configuration options for the testrunner
  */
 async function testRunner(options) {
-
   process.setMaxListeners(Infinity)
 
   console.log('TestRunner: Start.')
 
-  const { debug = false, globals, skipTests } = options
+  const { debug = false, globals, skipTests, runOnly } = options
 
   if (!globals) {
     throw new Error(
@@ -35,10 +34,14 @@ async function testRunner(options) {
     )
   }
 
-
   try {
     // get all auto-wcag testcases
-    const testcases = await loadTestCases(pkg.config, rulesMappedIds, skipTests)
+    const testcases = await loadTestCases({
+      config: pkg.config,
+      rulesMap,
+      skipTests,
+      runOnly
+    })
 
     if (!testcases || !testcases.length) {
       throw new Error(
@@ -60,8 +63,16 @@ async function testRunner(options) {
       const results = []
       for (const [index, testcase] of testcases.entries()) {
         try {
-          const testCaseResult = await executeTestCase({ browser, testcase, options })
-          console.log(`Executed test case: ${index + 1} of ${testcases.length}`);
+          console.log(
+            `Executing Testcase: ${index + 1} of ${
+              testcases.length
+            } \n Testcase URL: ${testcase.url} \n`
+          )
+          const testCaseResult = await executeTestCase({
+            browser,
+            testcase,
+            options
+          })
           results.push(testCaseResult)
         } catch (error) {
           throw ('Error: TestRunner: ', error)
@@ -69,15 +80,13 @@ async function testRunner(options) {
       }
 
       console.log('TestRunner: End.')
-      return results;
+      return results
     } catch (error) {
       throw new Error('TestRunner: Unable to launch puppeteer.', error)
     }
-
   } catch (error) {
     throw new Error('TestRunner: Error loading test cases. ', error)
   }
-
 }
 
 module.exports = testRunner

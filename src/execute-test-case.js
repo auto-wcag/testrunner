@@ -7,17 +7,22 @@ const scriptInjector = require('./script-injector')
  */
 async function injectGlobals(page, globals) {
   const keys = Object.keys(globals)
-  await Promise.all(keys.map(async (key) => {
-    const value = globals[key]
-    if (typeof value === 'function') {
-      await page.exposeFunction(key, value)
-    }
-    if (typeof value !== 'function') {
-      await page.evaluate(async function (object) {
-        return window[object.key] = object.value
-      }, { key, value })
-    }
-  }))
+  await Promise.all(
+    keys.map(async key => {
+      const value = globals[key]
+      if (typeof value === 'function') {
+        await page.exposeFunction(key, value)
+      }
+      if (typeof value !== 'function') {
+        await page.evaluate(
+          async function(object) {
+            return (window[object.key] = object.value)
+          },
+          { key, value }
+        )
+      }
+    })
+  )
 }
 
 /**
@@ -25,13 +30,12 @@ async function injectGlobals(page, globals) {
  * @param {Object} param meta data used to execute an ACT testcase
  * @property {Object} param.browser Puppeteer browser object
  * @property {Object} param.testcase ACT testcase
- * @property {Object} param.options opts 
+ * @property {Object} param.options opts
  */
 async function executeTestCase({ browser, testcase, options }) {
   const { globals, evaluate } = options
 
   return new Promise(async (resolve, reject) => {
-
     try {
       // open new page
       const page = await browser.newPage()
@@ -62,7 +66,7 @@ async function executeTestCase({ browser, testcase, options }) {
         { variables: {}, functions: {} }
       )
 
-      // inject global vars   
+      // inject global vars
       await injectGlobals(page, globalVarsAndFns.variables)
 
       // expose functions as global
