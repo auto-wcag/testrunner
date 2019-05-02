@@ -30,12 +30,12 @@ async function testRunner(options) {
   const rulesMappedIds = Object.keys(rulesMap)
   if (!rulesMappedIds || !rulesMappedIds.length) {
     throw new Error(
-      'TestRunner: `rulesMap` does not contain `auto-wcag` rule id(s).'
+      'TestRunner: `rulesMap` does not contain `act-r` rule id(s).'
     )
   }
 
   try {
-    // get all auto-wcag testcases
+    // get all act-r testcases
     const testcases = await loadTestCases({
       config: pkg.config,
       rulesMap,

@@ -1,6 +1,6 @@
 # TestRunner
 
-This module exposes a wrapper `testRunner` around the [test cases](https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/testcases.json) for each of the [rules](https://auto-wcag.github.io/auto-wcag/pages/rules.html) in [Auto-WCAG](https://auto-wcag.github.io/auto-wcag/), thereby allowing to execute a given evaluation function against the test case as a document context.
+This module exposes a wrapper `testRunner` around the [ACT Rules Testcases](https://act-rules.github.io/testcases.json) for each of the [rules](https://act-rules.github.io/rules/) in [ACT Rules Repository](https://act-rules.github.io/), thereby allowing to execute a given evaluation function against the test case as a document context.
 
 ## Usage of TestRunner
 
@@ -32,7 +32,7 @@ Members of the `config` object passed to the `testRunner`.
 | `config.debug`            | `Boolean`         | `false`                                                                          | (Optional) Runs the `testRunner` in `debug` mode, which launches each test case page in a chromium (non-headless) mode                                                                   |
 | `config.injectScripts`    | `Array<String>[]` | `undefined`                                                                      | (Optional) A list of `path` or `url` of scripts to be injected into the `puppeteer` page context                                                                                         |
 | `config.globals`          | `Object`          | `undefined`                                                                      | (Mandatory) An object containing `key-value` pairs of `variables` or `functions` to be mounted as a global variable in the `puppeteer` page context for usage by the `evaluate` function |
-| `config.globals.rulesMap` | `Object`          | -                                                                                | (Mandatory) An object containing `key-value` pairs of `ruleId` of each `auto-wcag` rule mapped to a `uniqueId` of rule(s) to run against a chosen test tool                              |
+| `config.globals.rulesMap` | `Object`          | -                                                                                | (Mandatory) An object containing `key-value` pairs of `ruleId` of each `act-r` rule mapped to a `uniqueId` of rule(s) to run against a chosen test tool                              |
 | `config.evaluate`         | `Function`        | -` | (Mandatory) A function containing logic to be evaluated on the page context |
 
 An example configuration object is as below:
@@ -57,9 +57,9 @@ const config = {
 
 ## Rules Mapping
 
-To help define a `1 to 1` or `1 to Many` relationship between [Auto-WCAG rules](https://auto-wcag.github.io/auto-wcag/pages/rules.html) and the test tool, an object of `key-value` pairs must be defined with the key `rulesMap` in the `config.globals`.
+To help define a `1 to 1` or `1 to Many` relationship between [ACT Rules](https://act-rules.github.io/rules/) and the test tool, an object of `key-value` pairs must be defined with the key `rulesMap` in the `config.globals`.
 
-A sample template to build mappings, showing each of the [Auto-WCAG rules](https://auto-wcag.github.io/auto-wcag/pages/rules.html) with their ids, can be [seen here](https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/rules.json)
+A sample template to build mappings, showing each of the [ACT Rules](https://act-rules.github.io/rules/) with their ids, can be [seen here](https://act-rules.github.io/testcases.json)
 
 An example mapping is as below:
 
