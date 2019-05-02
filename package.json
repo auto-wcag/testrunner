@@ -4,9 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "config": {
-    "TESTCASES_JSON":
-      "https://auto-wcag.github.io/auto-wcag/auto-wcag-testcases/testcases.json",
-    "TESTCASES_KEY": "a11y-testcases"
+    "TESTCASES_JSON": "https://act-rules.github.io/testcases.json",
+    "TESTCASES_KEY": "testcases"
   },
   "scripts": {
     "build": "npm run fmt && npm run lint && npm run test",
@@ -17,29 +16,29 @@
   "dependencies": {
     "axios": "^0.18.0",
     "is-url": "^1.2.4",
-    "puppeteer": "^1.8.0"
+    "puppeteer": "^1.15.0"
   },
   "devDependencies": {
-    "eslint": "^5.6.0",
-    "eslint-config-prettier": "^3.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^3.6.0",
     "eslint-config-prettier-standard": "^2.0.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-prettier": "^2.7.0",
+    "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
-    "jest": "^23.6.0",
+    "jest": "^24.7.1",
     "prettier-standard": "^8.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/auto-wcag/testrunner.git"
+    "url": "git+https://github.com/act-rules/testrunner"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/auto-wcag/testrunner/issues"
+    "url": "https://github.com/act-rules/testrunner/issues"
   },
-  "homepage": "https://github.com/auto-wcag/testrunner#readme"
+  "homepage": "https://github.com/act-rules/testrunner#readme"
 }
